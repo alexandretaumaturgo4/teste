@@ -1,0 +1,26 @@
+.app-sidenav {
+  color: white;
+  width: 260px;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container, .sidenav-content {
+  height: calc(100vh - 64px);
+}
+
+.mat-nav-list {
+  padding-top: 0;
+}
+
+.nav-item {
+  margin: 8px 0;
+  padding: 12px 16px;
+  font-size: 16px;
+  color: white;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}

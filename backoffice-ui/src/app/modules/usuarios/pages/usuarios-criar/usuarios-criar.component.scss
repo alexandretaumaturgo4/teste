@@ -1,0 +1,16 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.alert {
+  background-color: #ffcccb;
+  color: #333;
+  margin-bottom: 15px;
+  padding: 10px;
+}

@@ -1,0 +1,17 @@
+.dashboard-container {
+  margin: 16px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.dashboard-card {
+  min-height: 150px;
+}
+
+.recent-actions {
+  margin-top: 32px;
+}

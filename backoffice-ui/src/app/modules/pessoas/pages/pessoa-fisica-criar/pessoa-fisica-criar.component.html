@@ -1,0 +1,63 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <mat-form-field class="col">
+            <input matInput placeholder="Nome" formControlName="Nome">
+          </mat-form-field>
+
+          <mat-form-field class="col">
+            <input matInput placeholder="Apelido" formControlName="Apelido">
+          </mat-form-field>
+
+          <mat-form-field class="col">
+            <input matInput placeholder="CPF" formControlName="Cpf" maxlength="11">
+          </mat-form-field>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="row">
+          <mat-form-field class="col-full">
+            <mat-select placeholder="Qualificação" formControlName="Qualificacao">
+              <mat-option *ngFor="let qualificacao of qualificacoes" [value]="qualificacao.valor">
+                {{qualificacao.tipo}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="CEP" formControlName="Cep" (input)="buscarPorCep()" maxlength="8">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Rua" formControlName="Rua">
+          </mat-form-field>
+
+        </div>
+        <div class="row">
+          <mat-form-field>
+            <input matInput placeholder="Número" formControlName="Numero">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Bairro" formControlName="Bairro">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Cidade" formControlName="Cidade">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Estado" formControlName="Estado">
+          </mat-form-field>
+
+        </div>
+
+        <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

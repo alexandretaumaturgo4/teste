@@ -1,0 +1,20 @@
+.container {
+margin-top: 25px;
+}
+
+.card {
+  max-height: 90vh; // Altura máxima para o cartão
+  overflow-y: auto; // Adicionar scroll se necessário
+}
+
+mat-form-field {
+  margin: 16px; // Espaço entre os campos do formulário
+}
+
+button {
+  margin-top: 25px;
+}
+
+table {
+  margin-top: 25px;
+}

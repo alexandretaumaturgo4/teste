@@ -1,0 +1,40 @@
+<div class="dashboard-container">
+  <mat-toolbar color="primary" style="margin-bottom: 25px;">
+    <span *ngIf="userRole === 'administrador'; else elseBlock">Dashboard Administrativo (Dados mockados)</span>
+
+    <ng-template #elseBlock>
+      Bem vindo ao backoffice
+    </ng-template>
+
+  </mat-toolbar>
+
+  <div class="grid-container" *ngIf="userRole === 'administrador'">
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>Pessoas Cadastradas</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>320</h1>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>Departamentos Cadastrados</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>50</h1>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="dashboard-card">
+      <mat-card-header>
+        <mat-card-title>Usuários ativos</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h1>$2000</h1>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>
