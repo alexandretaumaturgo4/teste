@@ -8,7 +8,6 @@ using Backoffice.Application.Services.Base;
 using Backoffice.Core;
 using Backoffice.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -91,6 +90,21 @@ public class AuthenticationService : IAuthenticationService
         return new BaseResponse<IEnumerable<BuscarUsuarioResponse>>(true, response);
     }
 
+    public async Task<BaseResponse> RecuperarSenha(string userName)
+    {
+        var usuario = await _userManager.FindByNameAsync(userName);
+        if (usuario == null)
+        {
+            return new BaseResponse(false, "usuário não encontrado.");
+        }
+
+        var code = await GenerateRecoveryToken(usuario);
+
+        var result = await _userManager.ResetPasswordAsync(usuario, code, "Admin@123");
+
+        return new BaseResponse(result.Succeeded);
+    }
+
     public async Task<BaseResponse> DesativarUsuario(Guid idUsuario)
     {
         var user = await _userManager.FindByIdAsync(idUsuario.ToString());
@@ -104,6 +118,27 @@ public class AuthenticationService : IAuthenticationService
         await _userManager.UpdateAsync(user);
 
         return new BaseResponse(true, "Usuário desativado");
+    }
+
+    public async Task<BaseResponse> ResetarSenhaUsuario(string email, string senha)
+    {
+        var usuario = await _userManager.FindByEmailAsync(email);
+        if (usuario is null)
+        {
+            return new BaseResponse(false, "Usuário não encontrado");
+        }
+
+        var code = await GenerateRecoveryToken(usuario);
+
+        var result = await _userManager.ResetPasswordAsync(usuario, code, senha);
+
+        return new BaseResponse(result.Succeeded);
+    }
+
+    private async Task<string> GenerateRecoveryToken(IdentityUser usuario)
+    {
+        var code = await _userManager.GeneratePasswordResetTokenAsync(usuario);
+        return code;
     }
 
     private async Task<LoginResponse> GenerateToken(IdentityUser user)
@@ -159,4 +194,5 @@ public class AuthenticationService : IAuthenticationService
 
         return tokenHandler.WriteToken(token);
     }
+
 }

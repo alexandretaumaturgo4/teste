@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatDialog} from "@angular/material/dialog";
 import {PessoasService} from "../../services/pessoas.service";
 import {PessoaFisica, PessoaJuridica} from "../../models/pessoa-fisica.model";
@@ -17,14 +16,17 @@ export class PessoasListarComponent {
 
   userRole: string;
 
-  displayedColumnsPessoaFisica: string[] = ['nome', 'documento'];
-  displayedColumnsPessoaJuridica: string[] = ['razaoSocial', 'documento'];
+  displayedColumnsPessoaFisica: string[] = ['nome', 'documento', 'criadoEm'];
+  displayedColumnsPessoaJuridica: string[] = ['razaoSocial', 'documento', 'criadoEm'];
 
   dataSourcePessoaFisica: PessoaFisica[] = [];
 
   dataSourcePessoaJuridica: PessoaJuridica[] = [];
 
-  constructor(public dialog: MatDialog, private pessoaService: PessoasService, private authenticationService: AuthenticationService) {
+  constructor(
+    public dialog: MatDialog,
+    private pessoaService: PessoasService,
+    private authenticationService: AuthenticationService) {
 
   }
 
@@ -64,11 +66,6 @@ export class PessoasListarComponent {
     dialogRef.afterClosed().subscribe(result => {
       location.reload();
     });
-  }
-
-  showDetails(element: any): void {
-    // Aqui você pode implementar a lógica para mostrar mais detalhes sobre a pessoa
-    console.log('Mostrar detalhes para: ', element);
   }
 
 }

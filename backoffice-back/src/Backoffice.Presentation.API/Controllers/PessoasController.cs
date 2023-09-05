@@ -15,7 +15,7 @@ public class PessoasController : MainController
         _pessoasService = pessoasService;
     }
 
-    //[Authorize(Roles = "usuario,administrador")]
+    [Authorize(Roles = "usuario,administrador")]
     [HttpPost("pessoa-fisica")]
     public async Task<IActionResult> CadastrarPessoaFisica(CadastrarPessoaFisicaRequest request)
     {
@@ -23,7 +23,7 @@ public class PessoasController : MainController
         return ApiResult(response);
     }
 
-    //[Authorize(Roles = "usuario,administrador")]
+    [Authorize(Roles = "usuario,administrador")]
     [HttpPost("pessoa-juridica")]
     public async Task<IActionResult> CadastrarPessoaJuridica(CadastrarPessoaJuridicaRequest request)
     {
@@ -47,7 +47,7 @@ public class PessoasController : MainController
         return ApiResult(result);
     }
 
-    //[Authorize(Roles = "usuario,administrador")]
+    [Authorize(Roles = "usuario,administrador")]
     [HttpGet("colaboradores")]
     public async Task<IActionResult> BuscarColaboradores()
     {

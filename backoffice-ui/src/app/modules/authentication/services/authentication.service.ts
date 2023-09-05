@@ -9,6 +9,7 @@ import {StorageService} from "../../../shared/services/via-cep/via-cep.service";
 import {AUTH_CONFIG} from "../auth.config";
 import {ERoles} from "../../../shared/models/Usuario/ERoles";
 import {environment} from "../../../../environments/environment.development";
+import {Response} from "../../../shared/models/base/base-response";
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,15 @@ export class AuthenticationService {
 
   public isAuthenticated(): boolean {
     return !!this.getToken();
+  }
+
+  public recuperarSenha(userName: string): Observable<Response> {
+    return this.httpClient
+      .put<Response>(`${environment.API_URL}Auth/recuperar-senha?userName=${userName}`, null)
+      .pipe(
+        take(1),
+        map((result) => HttpUtil.extractData(result))
+      );
   }
 
   public logout() {

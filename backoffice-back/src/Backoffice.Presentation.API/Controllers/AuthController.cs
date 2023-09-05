@@ -1,5 +1,6 @@
 using Backoffice.Application.Services.Authentication;
 using Backoffice.Application.Services.Authentication.Requests;
+using Backoffice.Application.Services.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,6 +44,20 @@ public class AuthController : MainController
     public async Task<IActionResult> DesativarUsuario(Guid idUsuario)
     {
         var response = await _authenticationService.DesativarUsuario(idUsuario);
+        return ApiResult(response);
+    }
+
+    [HttpPut("recuperar-senha")]
+    public async Task<IActionResult> RecuperarSenha(string userName)
+    {
+        var response = await _authenticationService.RecuperarSenha(userName);
+        return ApiResult(response);
+    }
+
+    [HttpPost("mudar-senha-usuario")]
+    public async Task<IActionResult> ResetarSenhaUsuario(string email, string senha)
+    {
+        var response = await _authenticationService.ResetarSenhaUsuario(email, senha);
         return ApiResult(response);
     }
 }

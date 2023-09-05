@@ -14,6 +14,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {PessoaFisicaCriarComponent} from "./pages/pessoa-fisica-criar/pessoa-fisica-criar.component";
 import {PessoaJuridicaCriarComponent} from "./pages/pessoa-juridica-criar/pessoa-juridica-criar.component";
 import {MatSelectModule} from "@angular/material/select";
+import {FormatoDataPipe} from "../../shared/pipes/format-date-pipe";
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {MatSelectModule} from "@angular/material/select";
     PessoasListarComponent,
     PessoaFisicaCriarComponent,
     PessoaJuridicaCriarComponent,
+    FormatoDataPipe
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,7 @@ import {MatSelectModule} from "@angular/material/select";
     ReactiveFormsModule,
     MatRadioModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: []
 })

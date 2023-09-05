@@ -81,6 +81,9 @@ export class PessoaFisicaCriarComponent {
         .subscribe({
           next: result => {
             this.dialogRef.close();
+          }, error: err => {
+            console.log(err)
+            this.notificationService.error(err.error.mensagem);
           }
         })
     } else {

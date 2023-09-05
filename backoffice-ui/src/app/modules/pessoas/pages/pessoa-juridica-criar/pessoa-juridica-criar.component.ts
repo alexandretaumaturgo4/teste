@@ -77,6 +77,8 @@ export class PessoaJuridicaCriarComponent {
         .subscribe({
           next: result => {
             this.dialogRef.close();
+          }, error: err => {
+            this.notificationService.error(err.error.mensagem)
           }
         })
     } else {

@@ -25,7 +25,6 @@ export class UsuariosListarComponent implements OnInit {
     this.usuarioService.getUsuarios().subscribe({
       next: (result: Usuario[]) => {
         this.dataSourceUser = result;
-        console.log(result)
       }
     })
   }
@@ -34,21 +33,14 @@ export class UsuariosListarComponent implements OnInit {
     this.usuarioService.desativarUsuario(idUsuario)
       .subscribe({
         next: result => {
-          console.log(result)
+          this.carregarUsuarios();
         }
       })
-
-    this.carregarUsuarios();
-
-    location.reload();
   }
   openCreateUserDialog(): void {
     const dialogRef = this.matDialog.open(UsuariosCriarComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       location.reload();
     })
   }
-
-
 }

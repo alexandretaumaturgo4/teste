@@ -17,12 +17,11 @@
               <td mat-cell *matCellDef="let element">{{element.cpf}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="mostrarDetalhes">
-              <th mat-header-cell *matHeaderCellDef>Mostrar Detalhes</th>
-              <td mat-cell *matCellDef="let element">
-                <button mat-button (click)="showDetails(element)">Mostrar Detalhes</button>
-              </td>
+            <ng-container matColumnDef="criadoEm">
+              <th mat-header-cell *matHeaderCellDef>Criado Em</th>
+              <td mat-cell *matCellDef="let element">{{element.criadoEm | date: 'dd/MM/yyyy' }}</td>
             </ng-container>
+
 
             <tr mat-header-row *matHeaderRowDef="displayedColumnsPessoaFisica"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumnsPessoaFisica;"></tr>
@@ -38,9 +37,9 @@
               <td mat-cell *matCellDef="let element">{{element.razaoSocial}}</td>
             </ng-container>
 
-            <ng-container matColumnDef="dataCriacao">
-              <th mat-header-cell *matHeaderCellDef>Data de Criação</th>
-              <td mat-cell *matCellDef="let element">{{element.dataCriacao}}</td>
+            <ng-container matColumnDef="criadoEm">
+              <th mat-header-cell *matHeaderCellDef>Criado Em</th>
+              <td mat-cell *matCellDef="let element">{{element.criadoEm | date: 'dd/MM/yyyy' }}</td>
             </ng-container>
 
             <ng-container matColumnDef="documento">

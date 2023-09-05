@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/authentication.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Login} from "../../models/login";
-import {finalize} from "rxjs";
+import {finalize, Observable} from "rxjs";
 import {NotificationService} from "../../../../shared/services/notification/notification.service";
+import {BaseResponse} from "../../../../shared/models/base/base-response";
 
 @Component({
   selector: 'app-auth-login',
@@ -38,6 +39,14 @@ export class AuthLoginComponent {
   }
 
 
+  recuperarSenha(): void {
+    let userName = this.loginForm.get('userName').value;
+    this.authenticationService.recuperarSenha(userName).subscribe({
+      next: result => {
+        this.notificationService.success('Senha resetada para a senha padrão "Admin@123" ')
+      }
+    });
+  }
 
   onSubmit(): void {
     if (this.loginForm.invalid) {

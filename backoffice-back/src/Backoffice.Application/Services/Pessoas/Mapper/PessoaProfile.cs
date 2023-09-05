@@ -19,9 +19,10 @@ public class PessoaProfile : Profile
             .ForMember(x => x.Numero, x => x.MapFrom(x => x.Endereco.Numero))
             .ForMember(x => x.Bairro, x => x.MapFrom(x => x.Endereco.Bairro))
             .ForMember(x => x.Cidade, x => x.MapFrom(x => x.Endereco.Cidade))
-            .ForMember(x => x.Estado, x => x.MapFrom(x => x.Endereco.Estado));
+            .ForMember(x => x.Estado, x => x.MapFrom(x => x.Endereco.Estado))
+            .ForMember(x => x.CriadoEm, x => x.MapFrom(x => x.CreatedAt))
+            .ForMember(x => x.AtualizadoEm, x => x.MapFrom(x => x.UpdatedAt));
 
-        
         CreateMap<Pessoa, BuscarPessoaFisicaResponse>()
             .ForMember(x => x.Id, x => x.MapFrom(x => x.Id))
             .ForMember(x => x.Qualificacao, x => x.MapFrom(x => x.Qualificacao.ToString()))
@@ -33,7 +34,9 @@ public class PessoaProfile : Profile
             .ForMember(x => x.Numero, x => x.MapFrom(x => x.Endereco.Numero))
             .ForMember(x => x.Bairro, x => x.MapFrom(x => x.Endereco.Bairro))
             .ForMember(x => x.Cidade, x => x.MapFrom(x => x.Endereco.Cidade))
-            .ForMember(x => x.Estado, x => x.MapFrom(x => x.Endereco.Estado));
+            .ForMember(x => x.Estado, x => x.MapFrom(x => x.Endereco.Estado))
+            .ForMember(x => x.CriadoEm, x => x.MapFrom(x => x.CreatedAt))
+            .ForMember(x => x.AtualizadoEm, x => x.MapFrom(x => x.UpdatedAt));
 
         CreateMap<Pessoa, BuscarPessoasColaboradorasResponse>()
             .ForMember(x => x.Documento,
